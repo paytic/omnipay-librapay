@@ -1,0 +1,43 @@
+{
+  "name": "bytic/omnipay-librapay",
+  "type": "library",
+  "license": "MIT",
+  "description": "librapay driver for ThePhpLeague Omnipay multi-payment processing library",
+  "keywords": [
+    "librapay",
+    "driver",
+    "gateway",
+    "merchant",
+    "pay",
+    "payment"
+  ],
+  "homepage": "https://github.com/ByTIC/omnipay-librapay",
+  "authors": [
+    {
+      "name": "Gabriel Solomon",
+      "email": "hello@gabrielsolomon.ro"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "ByTIC\\Omnipay\\Librapay\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "ByTIC\\Omnipay\\Librapay\\Tests\\": "tests/src",
+      "ByTIC\\Omnipay\\Librapay\\Tests\\Fixtures\\": "tests/fixtures"
+    }
+  },
+  "require": {
+    "php": "^7.0",
+    "omnipay/common": "^2.3",
+    "bytic/omnipay-common": "^1.0"
+  },
+  "require-dev": {
+    "squizlabs/php_codesniffer": "^3.0",
+    "phpunit/phpunit": "^6.2",
+    "vlucas/phpdotenv": "^2.3",
+    "mockery/mockery": "^1.1"
+  }
+}
