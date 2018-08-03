@@ -174,7 +174,7 @@ class Purchase extends AbstractModel
         $fields = $this->getFieldsForString();
         $return = '';
         foreach ($fields as $field) {
-            $return .= in_array($field, ['trtype', 'country'])
+            $return .= in_array($field, ['country','merch_gmt'])
                 ? $this->{$field}
                 : $this->generatePropertyString($field);
         }

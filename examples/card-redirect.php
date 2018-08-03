@@ -5,29 +5,29 @@ require 'init.php';
 $gateway = new \ByTIC\Omnipay\Librapay\Gateway();
 
 $parameters = [
-    'orderId' => 99999,
-    'amount' => 20.00,
-    'desc' => 'Order description',
-    'card' => ['first_name' => 'Gabriel','last_name' => 'Solomon'],
-    'returnUrl' => '',
+    'orderId' => 100005,
+    'amount' => 2.56,
+    'description' => 'Comanda online #100005',
+    'card' => ['first_name' => 'Gabriel', 'last_name' => 'Solomon', 'email' => 'vladv63@yahoo.com'],
+    'returnUrl' => 'register.42km.ro/testResponse.librapay.php',
     'notifyUrl' => '',
     'items' => [
         [
             'name' => 10,
             'price' => '5.00',
             'description' => 'Product 1 Desc',
-            'quantity' => 2
+            'quantity' => 2,
         ],
         [
             'name' => 'Ping Pong',
             'price' => '15.00',
             'description' => 'Product 2 Desc',
-            'quantity' => 1
+            'quantity' => 1,
         ],
-    ]
+    ],
 ];
 
-foreach (['merchant','merchantName','terminal','key'] as $field) {
+foreach (['merchant', 'merchantName', 'merchantUrl', 'terminal', 'key'] as $field) {
     $parameters[$field] = $_ENV['LIBRAPAY_'.strtoupper($field)];
 }
 

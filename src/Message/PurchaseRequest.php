@@ -57,11 +57,12 @@ class PurchaseRequest extends AbstractRequest
         $data['purchase'] = Purchase::fromRequest($this);
 
         $data['backref'] = $this->getReturnUrl();
-        $data['postAction'] = $this->getNotifyUrl();
 
         $data['data_custom'] = CustomData::fromRequest($this)->__toString();
         $data['string'] = $data['purchase']->__toString();
-        $data['p_sign'] = Helper::generateSignHash($data['purchase']->__toString(), $this->getKey());
+        $data['p_sign'] = Helper::generateSignHash($data['string'], $this->getKey());
+
+        var_dump($data['string'],$this->getKey(),$data['p_sign']);
 
         $data['redirectUrl'] = $this->getEndpointUrl();
 
