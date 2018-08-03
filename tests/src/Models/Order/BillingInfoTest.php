@@ -19,6 +19,6 @@ class BillingInfoTest extends AbstractTest
 
         $billing = BillingInfo::fromCard($card);
 
-        self::assertSame($parameters['billingFirstName'] . ' ' . $parameters['billingLastName'], $billing->Name);
+        self::assertSame($parameters['billingFirstName'] . ' ' . $parameters['billingLastName'], $billing->name);
     }
 }

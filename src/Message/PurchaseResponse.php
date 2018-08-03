@@ -3,6 +3,7 @@
 namespace ByTIC\Omnipay\Librapay\Message;
 
 use ByTIC\Omnipay\Common\Message\Traits\RedirectHtmlTrait;
+use ByTIC\Omnipay\Librapay\Models\Transactions\Purchase;
 use Omnipay\Common\Message\RedirectResponseInterface;
 
 /**
@@ -17,18 +18,24 @@ class PurchaseResponse extends AbstractResponse implements RedirectResponseInter
      */
     public function getRedirectData()
     {
+        /** @var Purchase $purchase */
+        $purchase = $this->getDataProperty('purchase');
+
         $data = [
-            'AMOUNT' => $this->getDataProperty('amount'),
-            'CURRENCY' => $this->getDataProperty('currency'),
-            'ORDER' => $this->getDataProperty('order'),
-            'DESC' => $this->getDataProperty('order'),
-            'TERMINAL' => $this->getDataProperty('order'),
-            'TIMESTAMP' => $this->getDataProperty('order'),
-            'NONCE' => $this->getDataProperty('order'),
-            'BACKREF' => $this->getDataProperty('order'),
-            'DATA_CUSTOM' => $this->getDataProperty('order'),
-            'STRING' => $this->getDataProperty('order'),
-            'P_SIGN' => $this->getDataProperty('order')
+            'AMOUNT' => $purchase->getAmount(),
+            'CURRENCY' => $purchase->getCurrency(),
+            'ORDER' => $purchase->getOrder(),
+            'DESC' => $purchase->getDesc(),
+            'TERMINAL' => $purchase->getTerminal(),
+            'TIMESTAMP' => $purchase->getTimestamp(),
+            'NONCE' => $purchase->nonce(),
+
+            'BACKREF' => $this->getDataProperty('backref'),
+            'POSTACTION' => $this->getDataProperty('postAction'),
+
+            'DATA_CUSTOM' => $this->getDataProperty('data_custom'),
+            'STRING' => $this->getDataProperty('string'),
+            'P_SIGN' => $this->getDataProperty('p_sign')
         ];
 
         return $data;

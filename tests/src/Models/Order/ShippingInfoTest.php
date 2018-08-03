@@ -19,6 +19,6 @@ class ShippingInfoTest extends AbstractTest
 
         $info = ShippingInfo::fromCard($card);
 
-        self::assertSame($parameters['shippingFirstName'] . ' ' . $parameters['shippingLastName'], $info->Name);
+        self::assertSame($parameters['shippingFirstName'] . ' ' . $parameters['shippingLastName'], $info->name);
     }
 }

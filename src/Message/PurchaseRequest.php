@@ -4,6 +4,9 @@ namespace ByTIC\Omnipay\Librapay\Message;
 
 use ByTIC\Omnipay\Common\Library\Signer;
 use ByTIC\Omnipay\Common\Message\Traits\RequestDataGetWithValidationTrait;
+use ByTIC\Omnipay\Librapay\Helper;
+use ByTIC\Omnipay\Librapay\Models\Order\CustomData;
+use ByTIC\Omnipay\Librapay\Models\Transactions\Purchase;
 
 /**
  * Class PurchaseRequest
@@ -45,24 +48,22 @@ class PurchaseRequest extends AbstractRequest
 
     /**
      * @inheritdoc
+     * @throws \Omnipay\Common\Exception\InvalidRequestException
      */
     protected function populateData()
     {
         $data = [];
 
-        $data['AMOUNT'] = $this->getAmount();
-        $data['CURRENCY'] = $this->getCurrency();
-        $data['ORDER'] = $this->getCurrency();
-        $data['DESC'] = $this->getCurrency();
-        $data['TERMINAL'] = $this->getTerminal();
-        $data['TIMESTAMP'] = gmdate( "YmdHis");
-        $data['NONCE'] = md5("shopperkey_".rand(99999,9999999));
+        $data['purchase'] = Purchase::fromRequest($this);
 
-        $data['BACKREF'] = $this->getEndpointUrl();
+        $data['backref'] = $this->getReturnUrl();
+        $data['postAction'] = $this->getNotifyUrl();
 
-        $signer = new Signer();
-        $signer->setCertificate($this->getCertificate());
+        $data['data_custom'] = CustomData::fromRequest($this)->__toString();
+        $data['string'] = $data['purchase']->__toString();
+        $data['p_sign'] = Helper::generateSignHash($data['purchase']->__toString(), $this->getKey());
 
+        $data['redirectUrl'] = $this->getEndpointUrl();
 
         return $data;
     }

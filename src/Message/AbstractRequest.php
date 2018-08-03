@@ -67,6 +67,40 @@ abstract class AbstractRequest extends CommonAbstractRequest
     /**
      * @return mixed
      */
+    public function getMerchantName()
+    {
+        return $this->getParameter('merchantName');
+    }
+
+    /**
+     * @param $value
+     * @return CommonAbstractRequest
+     */
+    public function setMerchantName($value)
+    {
+        return $this->setParameter('merchantName', $value);
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMerchantUrl()
+    {
+        return $this->getParameter('merchantUrl');
+    }
+
+    /**
+     * @param $value
+     * @return CommonAbstractRequest
+     */
+    public function setMerchantUrl($value)
+    {
+        return $this->setParameter('merchantUrl', $value);
+    }
+
+    /**
+     * @return mixed
+     */
     public function getEndpointUrl()
     {
         return $this->getParameter('endpointUrl');
