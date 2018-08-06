@@ -87,7 +87,24 @@ class Purchase extends AbstractModel
     protected $backref;
 
     /**
+     * @param array $params
+     */
+    public static function fromParams($params = [])
+    {
+        $transaction = new self();
+        $fields = static::getFieldsForString();
+        foreach ($fields as $field) {
+            if (isset($params[$field])) {
+                $transaction->{$field} = $params[$field];
+            }
+        }
+
+        return $transaction;
+    }
+
+    /**
      * @param AbstractRequest $request
+     * @return Purchase
      * @throws \Omnipay\Common\Exception\InvalidRequestException
      */
     public static function fromRequest(AbstractRequest $request)
@@ -171,10 +188,10 @@ class Purchase extends AbstractModel
      */
     public function __toString()
     {
-        $fields = $this->getFieldsForString();
+        $fields = static::getFieldsForString();
         $return = '';
         foreach ($fields as $field) {
-            $return .= in_array($field, ['country','merch_gmt'])
+            $return .= in_array($field, ['country', 'merch_gmt'])
                 ? $this->{$field}
                 : $this->generatePropertyString($field);
         }
@@ -196,7 +213,7 @@ class Purchase extends AbstractModel
     /**
      * @return array
      */
-    protected function getFieldsForString()
+    protected static function getFieldsForString()
     {
         return [
             'amount',

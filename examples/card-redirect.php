@@ -6,23 +6,23 @@ $gateway = new \ByTIC\Omnipay\Librapay\Gateway();
 
 $parameters = [
     'orderId' => 100005,
-    'amount' => 2.56,
+    'amount' => 3.49,
     'description' => 'Comanda online #100005',
     'card' => ['first_name' => 'Gabriel', 'last_name' => 'Solomon', 'email' => 'vladv63@yahoo.com'],
     'returnUrl' => 'register.42km.ro/testResponse.librapay.php',
     'notifyUrl' => '',
     'items' => [
         [
-            'name' => 10,
-            'price' => '5.00',
-            'description' => 'Product 1 Desc',
-            'quantity' => 2,
+            'name' => 'Paine',
+            'price' => '1.25',
+            'description' => 'Paine de casa',
+            'quantity' => 1,
         ],
         [
-            'name' => 'Ping Pong',
-            'price' => '15.00',
+            'name' => 'Paine2',
+            'price' => '1.12',
             'description' => 'Product 2 Desc',
-            'quantity' => 1,
+            'quantity' => 2,
         ],
     ],
 ];

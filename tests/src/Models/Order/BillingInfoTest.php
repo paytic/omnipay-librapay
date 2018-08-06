@@ -6,6 +6,10 @@ use ByTIC\Omnipay\Librapay\Models\Order\BillingInfo;
 use ByTIC\Omnipay\Librapay\Tests\AbstractTest;
 use Omnipay\Common\CreditCard;
 
+/**
+ * Class BillingInfoTest
+ * @package ByTIC\Omnipay\Librapay\Tests\Models\Order
+ */
 class BillingInfoTest extends AbstractTest
 {
     public function testFromCard()
