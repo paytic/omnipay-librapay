@@ -36,26 +36,11 @@ class Gateway extends AbstractGateway
     protected $endpointLive = 'https://secure.librapay.ro/pay_auth.php';
 
     /**
-     * @var string
-     */
-    protected $signature;
-
-    /**
-     * @var string|null Certificate Content
-     */
-    protected $certificate;
-
-    /**
-     * @var string|null PrivateKey Content
-     */
-    protected $privateKey;
-
-    /**
      * @inheritdoc
      */
     public function getName()
     {
-        return 'Twispay';
+        return 'LibraPay';
     }
 
     // ------------ REQUESTS ------------ //
@@ -105,9 +90,6 @@ class Gateway extends AbstractGateway
     {
         return [
             'testMode' => true, // Must be the 1st in the list!
-            'signature' => $this->getSignature(),
-            'certificate' => $this->getCertificate(),
-            'privateKey' => $this->getPrivateKey(),
             'card' => [
                 'first_name' => ''
             ], //Add in order to generate the Card Object
@@ -139,54 +121,4 @@ class Gateway extends AbstractGateway
     }
 
     // ------------ Getter'n'Setters ------------ //
-
-    /**
-     * @return mixed
-     */
-    public function getSignature()
-    {
-        return $this->signature;
-    }
-
-    /**
-     * @param mixed $signature
-     */
-    public function setSignature($signature)
-    {
-        $this->signature = $signature;
-    }
-
-    /**
-     * @return null|string
-     */
-    public function getCertificate()
-    {
-        return $this->certificate;
-    }
-
-    /**
-     * @param null|string $certificate
-     */
-    public function setCertificate($certificate)
-    {
-        $this->certificate = $certificate;
-    }
-
-
-    /**
-     * @return string
-     */
-    public function getPrivateKey()
-    {
-        return $this->privateKey;
-    }
-
-    /**
-     * @param string $privateKey
-     */
-    public function setPrivateKey(string $privateKey)
-    {
-        $this->privateKey = $privateKey;
-    }
-
 }
