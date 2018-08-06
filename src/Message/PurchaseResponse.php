@@ -31,7 +31,6 @@ class PurchaseResponse extends AbstractResponse implements RedirectResponseInter
             'NONCE' => $purchase->nonce(),
 
             'BACKREF' => $this->getDataProperty('backref'),
-            'POSTACTION' => $this->getDataProperty('postAction'),
 
             'DATA_CUSTOM' => $this->getDataProperty('data_custom'),
             'STRING' => $this->getDataProperty('string'),

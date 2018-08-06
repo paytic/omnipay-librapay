@@ -118,7 +118,7 @@ class Purchase extends AbstractModel
         $transaction->merch_url = $request->getMerchantUrl();
         $transaction->merchant = $request->getMerchant();
         $transaction->terminal = $request->getTerminal();
-        $transaction->email = $request->getCard()->getEmail();
+        $transaction->email = $request->getMerchantEmail();
 //            $transaction->country= $request->getCard()->getCountry();
         $transaction->timestamp = gmdate("YmdHis");
         $transaction->nonce = md5("bytic".rand(99999, 9999999));

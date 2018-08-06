@@ -3,6 +3,8 @@
 namespace ByTIC\Omnipay\Librapay\Models\Order;
 
 use ByTIC\Omnipay\Librapay\Models\AbstractModel;
+use ByTIC\Omnipay\Librapay\Models\Traits\ToArrayTrait;
+use Omnipay\Common\Exception\InvalidRequestException;
 use Omnipay\Common\Item;
 
 /**
@@ -11,6 +13,8 @@ use Omnipay\Common\Item;
  */
 class Product extends AbstractModel
 {
+    use ToArrayTrait;
+
     protected $itemName;
     protected $itemDesc;
     protected $categ;
@@ -22,6 +26,7 @@ class Product extends AbstractModel
     /**
      * @param Item $item
      * @return Product
+     * @throws InvalidRequestException
      */
     public static function fromItemBag(Item $item)
     {
@@ -31,20 +36,14 @@ class Product extends AbstractModel
         $product->quantity = $item->getQuantity();
         $product->price = $item->getPrice();
 
+        $product->validateData();
+
         return $product;
     }
 
-    /**
-     * @return array
-     */
-    public function toArray()
+    protected function validateDataFields()
     {
-        $properties = get_object_vars($this);
-        $return = [];
-        foreach ($properties as $property) {
-            $name = ucfirst($property);
-            $return[$name] = $this->{$property};
-        }
-        return $return;
+        return ['itemName', 'quantity', 'price'];
     }
+
 }

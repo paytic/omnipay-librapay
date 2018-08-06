@@ -2,6 +2,7 @@
 
 namespace ByTIC\Omnipay\Librapay\Models\Order;
 
+use ByTIC\Omnipay\Librapay\Models\Traits\ToArrayTrait;
 use Omnipay\Common\CreditCard;
 
 /**
@@ -10,6 +11,8 @@ use Omnipay\Common\CreditCard;
  */
 abstract class AbstractInfo
 {
+    use ToArrayTrait;
+
     const TYPE = 'Billing';
 
     public $name;
@@ -38,25 +41,19 @@ abstract class AbstractInfo
         $return->country = $return->getValueFromCard($card, 'country');
 
         $return->address = $return->getValueFromCard($card, 'Address1')
-            .' '
-            .$return->getValueFromCard($card, 'Address2');
+            . ' '
+            . $return->getValueFromCard($card, 'Address2');
 
         return $return;
     }
 
     /**
-     * @return array
+     * @param $property
+     * @return string
      */
-    public function toArray()
+    public function toArrayName($property)
     {
-        $properties = get_object_vars($this);
-        $return = [];
-        foreach ($properties as $property) {
-            $name = static::TYPE.ucfirst($property);
-            $return[$name] = $this->{$property};
-        }
-
-        return $return;
+        return static::TYPE . ucfirst($property);
     }
 
     /**
@@ -67,6 +64,6 @@ abstract class AbstractInfo
      */
     protected function getValueFromCard(CreditCard $card, $type)
     {
-        return $card->{'get'.static::TYPE.ucfirst($type)}();
+        return $card->{'get' . static::TYPE . ucfirst($type)}();
     }
 }

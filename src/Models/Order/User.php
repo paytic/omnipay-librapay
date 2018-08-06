@@ -3,6 +3,7 @@
 namespace ByTIC\Omnipay\Librapay\Models\Order;
 
 use ByTIC\Omnipay\Librapay\Models\AbstractModel;
+use ByTIC\Omnipay\Librapay\Models\Traits\ToArrayTrait;
 use Omnipay\Common\CreditCard;
 
 /**
@@ -11,6 +12,8 @@ use Omnipay\Common\CreditCard;
  */
 class User extends AbstractModel
 {
+    use ToArrayTrait;
+
     public $loginName;
     public $email;
     public $name;
@@ -28,19 +31,5 @@ class User extends AbstractModel
         $user->email = $card->getEmail();
         $user->phone = $card->getPhone();
         return $user;
-    }
-
-    /**
-     * @return array
-     */
-    public function toArray()
-    {
-        $properties = get_object_vars($this);
-        $return = [];
-        foreach ($properties as $property) {
-            $name = ucfirst($property);
-            $return[$name] = $this->{$property};
-        }
-        return $return;
     }
 }

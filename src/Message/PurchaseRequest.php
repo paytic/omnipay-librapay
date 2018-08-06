@@ -32,18 +32,16 @@ class PurchaseRequest extends AbstractRequest
     /** @noinspection PhpMissingParentCallCommonInspection
      * @inheritdoc
      */
-    public function validateDataFields()
+    protected function validateDataFields()
     {
-        return [
-            'merchant',
-            'terminal',
-            'key',
+        $params = [
             'amount',
             'orderId',
 //            'orderId', 'orderName', 'orderDate',
 //            'notifyUrl', 'returnUrl', 'signature', 'certificate',
 //            'card'
         ];
+        return array_merge($params, parent::validateDataFields());
     }
 
     /**
@@ -61,8 +59,6 @@ class PurchaseRequest extends AbstractRequest
         $data['data_custom'] = CustomData::fromRequest($this)->__toString();
         $data['string'] = $data['purchase']->__toString();
         $data['p_sign'] = Helper::generateSignHash($data['string'], $this->getKey());
-
-        var_dump($data['string'],$this->getKey(),$data['p_sign']);
 
         $data['redirectUrl'] = $this->getEndpointUrl();
 

@@ -84,6 +84,23 @@ abstract class AbstractRequest extends CommonAbstractRequest
     /**
      * @return mixed
      */
+    public function getMerchantEmail()
+    {
+        return $this->getParameter('merchantEmail');
+    }
+
+    /**
+     * @param $value
+     * @return CommonAbstractRequest
+     */
+    public function setMerchantEmail($value)
+    {
+        return $this->setParameter('merchantEmail', $value);
+    }
+
+    /**
+     * @return mixed
+     */
     public function getMerchantUrl()
     {
         return $this->getParameter('merchantUrl');
@@ -114,6 +131,7 @@ abstract class AbstractRequest extends CommonAbstractRequest
     {
         return $this->setParameter('endpointUrl', $value);
     }
+
     /**
      * @return string
      */
@@ -129,5 +147,17 @@ abstract class AbstractRequest extends CommonAbstractRequest
     public function setOrderId($value)
     {
         return $this->setParameter('orderId', $value);
+    }
+
+    protected function validateDataFields()
+    {
+        return [
+            'merchant',
+            'merchantName',
+            'merchantEmail',
+            'merchantUrl',
+            'terminal',
+            'key'
+        ];
     }
 }
