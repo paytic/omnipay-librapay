@@ -28,7 +28,6 @@ class PurchaseRequest extends AbstractRequest
         return parent::initialize($parameters);
     }
 
-
     /** @noinspection PhpMissingParentCallCommonInspection
      * @inheritdoc
      */

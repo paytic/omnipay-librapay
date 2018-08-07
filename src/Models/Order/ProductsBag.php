@@ -15,7 +15,7 @@ class ProductsBag
      * Item storage
      * @var Product[]
      */
-    protected $items;
+    protected $items = [];
 
     /**
      * @param ItemBag $bag

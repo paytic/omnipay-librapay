@@ -32,4 +32,13 @@ class User extends AbstractModel
         $user->phone = $card->getPhone();
         return $user;
     }
+
+    /**
+     * @param $property
+     * @return string
+     */
+    public function toArrayName($property)
+    {
+        return ucfirst($property);
+    }
 }

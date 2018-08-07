@@ -1,6 +1,6 @@
 <?php
 
-namespace ByTIC\Omnipay\Librapay\Tests\Models\Purchase;
+namespace ByTIC\Omnipay\Librapay\Tests\Models\Transactions;
 
 use ByTIC\Omnipay\Librapay\Models\Transactions\Purchase;
 use ByTIC\Omnipay\Librapay\Tests\AbstractTest;

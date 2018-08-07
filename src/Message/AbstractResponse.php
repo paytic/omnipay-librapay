@@ -12,14 +12,4 @@ use Omnipay\Common\Message\AbstractResponse as CommonAbstractResponse;
 abstract class AbstractResponse extends CommonAbstractResponse
 {
     use DataAccessorsTrait;
-
-    /**
-     * @inheritdoc
-     */
-    public function isSuccessful()
-    {
-        return
-            isset($this->data['success'])
-            && $this->data['success'];
-    }
 }

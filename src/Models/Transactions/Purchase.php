@@ -88,10 +88,11 @@ class Purchase extends AbstractModel
 
     /**
      * @param array $params
+     * @return static
      */
     public static function fromParams($params = [])
     {
-        $transaction = new self();
+        $transaction = new static();
         $fields = static::getFieldsForString();
         foreach ($fields as $field) {
             if (isset($params[$field])) {
@@ -104,12 +105,12 @@ class Purchase extends AbstractModel
 
     /**
      * @param AbstractRequest $request
-     * @return Purchase
+     * @return static
      * @throws \Omnipay\Common\Exception\InvalidRequestException
      */
     public static function fromRequest(AbstractRequest $request)
     {
-        $transaction = new self();
+        $transaction = new static();
         $transaction->amount = $request->getAmount();
         $transaction->currency = $request->getCurrency();
         $transaction->order = $request->getOrderId();
@@ -183,8 +184,9 @@ class Purchase extends AbstractModel
         return $this->nonce;
     }
 
+
     /**
-     *
+     * @return string
      */
     public function __toString()
     {

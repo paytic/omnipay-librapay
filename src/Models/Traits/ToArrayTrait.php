@@ -24,7 +24,7 @@ trait ToArrayTrait
      */
     public function toArrayName($property)
     {
-        return ucfirst($property);
+        return $property;
     }
 
     /**
@@ -36,6 +36,9 @@ trait ToArrayTrait
         return $this->{$property};
     }
 
+    /**
+     * @return array
+     */
     public function toArrayProperties()
     {
         $properties = get_object_vars($this);

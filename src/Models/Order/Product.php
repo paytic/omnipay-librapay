@@ -41,9 +41,21 @@ class Product extends AbstractModel
         return $product;
     }
 
+    /**
+     * @return array
+     */
     protected function validateDataFields()
     {
         return ['itemName', 'quantity', 'price'];
     }
 
+
+    /**
+     * @param $property
+     * @return string
+     */
+    public function toArrayName($property)
+    {
+        return ucfirst($property);
+    }
 }

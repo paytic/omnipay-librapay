@@ -30,6 +30,24 @@ class CustomData
      */
     protected $shipping;
 
+    protected function __construct()
+    {
+        $this->products = new ProductsBag();
+        $this->user = new User();
+        $this->billing = new BillingInfo();
+        $this->shipping = new ShippingInfo();
+    }
+
+    /**
+     * @param $params
+     * @return CustomData
+     */
+    public static function fromParams( $params)
+    {
+        $data = new static();
+        return $data;
+    }
+
     /**
      * @param PurchaseRequest $request
      * @return CustomData
@@ -122,6 +140,16 @@ class CustomData
                 $this->getShipping()->toArray()
             ),
         ];
+    }
+
+
+    /**
+     * @param $property
+     * @return string
+     */
+    public function toArrayName($property)
+    {
+        return ucfirst($property);
     }
 
     /**
