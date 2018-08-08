@@ -2,7 +2,7 @@
 
 namespace ByTIC\Omnipay\Librapay\Message;
 
-use ByTIC\Omnipay\Common\Message\Traits\GatewayNotificationResponseTrait;
+use ByTIC\Omnipay\Librapay\Message\Traits\CompletePurchaseResponseTrait;
 
 /**
  * Class PurchaseResponse
@@ -10,40 +10,7 @@ use ByTIC\Omnipay\Common\Message\Traits\GatewayNotificationResponseTrait;
  */
 class ServerCompletePurchaseResponse extends AbstractResponse
 {
-    use GatewayNotificationResponseTrait;
-
-    /** @noinspection PhpMissingParentCallCommonInspection
-     * @inheritdoc
-     */
-    public function isSuccessful()
-    {
-        return $this->getCode() == 0;
-    }
-
-
-    /**
-     * @inheritdoc
-     */
-    public function isPending()
-    {
-        if ($this->getCode() == 0) {
-            return false;
-        }
-
-        return parent::isPending();
-    }
-
-    /**
-     * @inheritdoc
-     */
-    public function isCancelled()
-    {
-        if ($this->getCode() == 0) {
-            return false;
-        }
-
-        return parent::isCancelled();
-    }
+    use CompletePurchaseResponseTrait;
 
     public function send()
     {
@@ -56,8 +23,6 @@ class ServerCompletePurchaseResponse extends AbstractResponse
      */
     public function getContent()
     {
-        $content = "";
-
-        return $content;
+        return '1';
     }
 }

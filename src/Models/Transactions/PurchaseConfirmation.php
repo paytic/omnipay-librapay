@@ -106,4 +106,44 @@ class PurchaseConfirmation extends Purchase
             'nonce',
         ];
     }
+
+    /**
+     * @return mixed
+     */
+    public function getRc()
+    {
+        return $this->rc;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMessage()
+    {
+        return $this->message;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getRrn()
+    {
+        return $this->rrn;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getIntRef()
+    {
+        return $this->int_ref;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getApproval()
+    {
+        return $this->approval;
+    }
 }
