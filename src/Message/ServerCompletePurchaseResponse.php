@@ -23,6 +23,12 @@ class ServerCompletePurchaseResponse extends AbstractResponse
      */
     public function getContent()
     {
-        return '1';
+        if (count($this->getDataProperty('notification')) > 0) {
+            return '1';
+        }
+
+        return "<br />1:" . $this->getDataProperty('p_string')
+            . '<br />2:' . $this->getDataProperty('string')
+            . '0';
     }
 }

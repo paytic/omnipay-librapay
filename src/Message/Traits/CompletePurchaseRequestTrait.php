@@ -29,6 +29,7 @@ trait CompletePurchaseRequestTrait
         $p_sign = Helper::generateSignHash($string, $this->getKey());
 
         $this->setDataItem('code', $purchaseConfirmation->getRc());
+        $this->setDataItem('p_string', $httpParameters->get('P_SIGN'));
         $this->setDataItem('string', $string);
         $this->setDataItem('message', $purchaseConfirmation->getMessage());
 

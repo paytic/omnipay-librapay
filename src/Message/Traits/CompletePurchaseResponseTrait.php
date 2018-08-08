@@ -15,8 +15,8 @@ trait CompletePurchaseResponseTrait
      */
     public function isSuccessful()
     {
-        return $this->hasNotificationDataItem('action')
-            && $this->getNotificationDataItem('action') == '0';
+        return $this->hasNotificationDataItem('rc')
+            && $this->getNotificationDataItem('rc') == '00';
     }
 
     /**
@@ -24,8 +24,8 @@ trait CompletePurchaseResponseTrait
      */
     public function isCancelled()
     {
-        return $this->hasNotificationDataItem('action')
-            && in_array($this->getNotificationDataItem('action'), [2, 3]);
+        return $this->hasNotificationDataItem('rc')
+            && $this->getNotificationDataItem('rc') != '00';
     }
 
     /**

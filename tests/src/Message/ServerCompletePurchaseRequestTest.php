@@ -45,4 +45,29 @@ class ServerCompletePurchaseRequestTest extends AbstractTest
         self::assertSame('100005',$response->getTransactionId());
         self::assertSame('1',$response->getContent());
     }
+
+    public function testSendInvalidPSign()
+    {
+        $client = new HttpClient();
+        $request = HttpRequest::createFromGlobals();
+        $parameters = require TEST_FIXTURE_PATH . DIRECTORY_SEPARATOR. 'completePurchaseParams.php';
+        $parameters['P_SIGN'] .= '11';
+        $request->request->replace($parameters);
+        $request = new ServerCompletePurchaseRequest($client, $request);
+
+        $parameters = [];
+        foreach (['merchant', 'merchantName', 'merchantEmail', 'merchantUrl', 'terminal', 'key'] as $field) {
+            $parameters[$field] = $_ENV['LIBRAPAY_' . strtoupper($field)];
+        }
+        $request->initialize($parameters);
+
+        $response = $request->send();
+
+        self::assertInstanceOf(ServerCompletePurchaseResponse::class, $response);
+
+        self::assertFalse($response->isSuccessful());
+        self::assertFalse($response->isPending());
+        self::assertFalse($response->isCancelled());
+        self::assertEmpty($response->getDataProperty('notification'));
+    }
 }
