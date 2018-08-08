@@ -125,6 +125,8 @@ class Purchase extends AbstractModel
         $transaction->nonce = md5("bytic".rand(99999, 9999999));
         $transaction->backref = $request->getReturnUrl();
 
+        $transaction->validateData();
+
         return $transaction;
     }
 
@@ -210,6 +212,14 @@ class Purchase extends AbstractModel
         $value = $this->{$property};
 
         return strlen($value).$value;
+    }
+
+    /**
+     * @inheritdoc
+     */
+    protected function validateDataFields()
+    {
+        return ['amount', 'order'];
     }
 
     /**

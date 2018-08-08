@@ -35,14 +35,14 @@ abstract class AbstractInfo
     {
         $return = new static();
         $return->name = $return->getValueFromCard($card, 'name');
-//        $return->Email   = $return->getValueFromCard($card, 'email');
+        $return->email = $card->getEmail();
         $return->phone = $return->getValueFromCard($card, 'phone');
         $return->city = $return->getValueFromCard($card, 'city');
         $return->country = $return->getValueFromCard($card, 'country');
 
         $return->address = $return->getValueFromCard($card, 'Address1')
-            . ' '
-            . $return->getValueFromCard($card, 'Address2');
+            .' '
+            .$return->getValueFromCard($card, 'Address2');
 
         return $return;
     }
@@ -53,7 +53,7 @@ abstract class AbstractInfo
      */
     public function toArrayName($property)
     {
-        return static::TYPE . ucfirst($property);
+        return static::TYPE.ucfirst($property);
     }
 
     /**
@@ -64,6 +64,6 @@ abstract class AbstractInfo
      */
     protected function getValueFromCard(CreditCard $card, $type)
     {
-        return $card->{'get' . static::TYPE . ucfirst($type)}();
+        return $card->{'get'.static::TYPE.ucfirst($type)}();
     }
 }
