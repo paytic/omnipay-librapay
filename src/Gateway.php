@@ -5,6 +5,7 @@ namespace ByTIC\Omnipay\Librapay;
 use ByTIC\Omnipay\Librapay\Message\CompletePurchaseRequest;
 use ByTIC\Omnipay\Librapay\Message\PurchaseRequest;
 use ByTIC\Omnipay\Librapay\Message\ServerCompletePurchaseRequest;
+use ByTIC\Omnipay\Librapay\Traits\HasIntegrationParametersTrait;
 use Omnipay\Common\AbstractGateway;
 use Omnipay\Common\Message\RequestInterface;
 
@@ -24,6 +25,7 @@ use Omnipay\Common\Message\RequestInterface;
  */
 class Gateway extends AbstractGateway
 {
+    use HasIntegrationParametersTrait;
 
     /**
      * @var string
@@ -42,6 +44,8 @@ class Gateway extends AbstractGateway
     {
         return 'LibraPay';
     }
+
+
 
     // ------------ REQUESTS ------------ //
 

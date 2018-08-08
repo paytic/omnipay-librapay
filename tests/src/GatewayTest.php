@@ -15,14 +15,9 @@ class GatewayTest extends AbstractTest
     {
         $httpClient = new Client();
         $gateway = new Gateway($httpClient);
+        $gateway->initialize(require TEST_FIXTURE_PATH . DIRECTORY_SEPARATOR. 'enviromentParams.php');
 
-        $parameters = require TEST_FIXTURE_PATH . DIRECTORY_SEPARATOR. 'simpleOrderParams.php';
-
-        foreach (['merchant', 'merchantName', 'merchantEmail', 'merchantUrl', 'terminal', 'key'] as $field) {
-            $parameters[$field] = $_ENV['LIBRAPAY_' . strtoupper($field)];
-        }
-
-        $request = $gateway->purchase($parameters);
+        $request = $gateway->purchase(require TEST_FIXTURE_PATH . DIRECTORY_SEPARATOR. 'simpleOrderParams.php');
         $response = $request->send();
 
         $requestGateway = $httpClient->createRequest(

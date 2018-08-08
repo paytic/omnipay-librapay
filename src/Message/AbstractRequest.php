@@ -3,6 +3,7 @@
 namespace ByTIC\Omnipay\Librapay\Message;
 
 use ByTIC\Omnipay\Common\Message\Traits\SendDataRequestTrait;
+use ByTIC\Omnipay\Librapay\Traits\HasIntegrationParametersTrait;
 use Omnipay\Common\Message\AbstractRequest as CommonAbstractRequest;
 
 /**
@@ -12,108 +13,7 @@ use Omnipay\Common\Message\AbstractRequest as CommonAbstractRequest;
 abstract class AbstractRequest extends CommonAbstractRequest
 {
     use SendDataRequestTrait;
-
-    /**
-     * @return mixed
-     */
-    public function getMerchant()
-    {
-        return $this->getParameter('merchant');
-    }
-
-    /**
-     * @param $value
-     * @return CommonAbstractRequest
-     */
-    public function setMerchant($value)
-    {
-        return $this->setParameter('merchant', $value);
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getTerminal()
-    {
-        return $this->getParameter('terminal');
-    }
-
-    /**
-     * @param $value
-     * @return CommonAbstractRequest
-     */
-    public function setTerminal($value)
-    {
-        return $this->setParameter('terminal', $value);
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getKey()
-    {
-        return $this->getParameter('key');
-    }
-
-    /**
-     * @param $value
-     * @return CommonAbstractRequest
-     */
-    public function setKey($value)
-    {
-        return $this->setParameter('key', $value);
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getMerchantName()
-    {
-        return $this->getParameter('merchantName');
-    }
-
-    /**
-     * @param $value
-     * @return CommonAbstractRequest
-     */
-    public function setMerchantName($value)
-    {
-        return $this->setParameter('merchantName', $value);
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getMerchantEmail()
-    {
-        return $this->getParameter('merchantEmail');
-    }
-
-    /**
-     * @param $value
-     * @return CommonAbstractRequest
-     */
-    public function setMerchantEmail($value)
-    {
-        return $this->setParameter('merchantEmail', $value);
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getMerchantUrl()
-    {
-        return $this->getParameter('merchantUrl');
-    }
-
-    /**
-     * @param $value
-     * @return CommonAbstractRequest
-     */
-    public function setMerchantUrl($value)
-    {
-        return $this->setParameter('merchantUrl', $value);
-    }
+    use HasIntegrationParametersTrait;
 
     /**
      * @return mixed
