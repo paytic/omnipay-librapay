@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'orderId' => 100006,
+    'orderId' => 100007,
     'amount' => 3.49,
     'description' => 'Comanda online #100006',
     'card' => [
@@ -10,7 +10,7 @@ return [
         'email' => 'solomongaby@yahoo.com',
         'phone' => '0741.040.219'
     ],
-    'returnUrl' => 'register.42km.ro/testResponse.librapay.php',
+    'returnUrl' => 'http://localhost/libraries/bytic/omnipay-librapay/examples/card-response.php',
     'notifyUrl' => '',
     'items' => [
         [

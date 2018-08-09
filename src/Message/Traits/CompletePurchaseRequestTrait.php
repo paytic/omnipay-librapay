@@ -8,9 +8,14 @@ use ByTIC\Omnipay\Librapay\Models\Transactions\PurchaseConfirmation;
 use Exception;
 use Symfony\Component\HttpFoundation\ParameterBag;
 
+/**
+ * Trait CompletePurchaseRequestTrait
+ * @package ByTIC\Omnipay\Librapay\Message\Traits
+ */
 trait CompletePurchaseRequestTrait
 {
     use GatewayNotificationRequestTrait;
+
     /**
      * @return bool|mixed
      * @throws \Omnipay\Common\Exception\InvalidRequestException
@@ -40,6 +45,9 @@ trait CompletePurchaseRequestTrait
         return [];
     }
 
+    /**
+     * @param ParameterBag $parameters
+     */
     protected function populateFromHttpRequest(ParameterBag $parameters)
     {
         $this->setAmount($parameters->get('AMOUNT'));
@@ -48,7 +56,17 @@ trait CompletePurchaseRequestTrait
         $this->setDescription($parameters->get('DESC'));
     }
 
-    abstract protected function getHttpRequestBag() : ParameterBag;
+    /**
+     * @return ParameterBag
+     */
+    protected function getHttpRequestBag(): ParameterBag
+    {
+        if ($this->httpRequest->request->count() > 0 && $this->httpRequest->request->has('TERMINAL')) {
+            return $this->httpRequest->request;
+        }
+
+        return $this->httpRequest->query;
+    }
 
     /** @noinspection PhpMissingParentCallCommonInspection
      * @inheritdoc

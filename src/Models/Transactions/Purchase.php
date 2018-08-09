@@ -3,6 +3,7 @@
 namespace ByTIC\Omnipay\Librapay\Models\Transactions;
 
 use ByTIC\Omnipay\Librapay\Message\AbstractRequest;
+use ByTIC\Omnipay\Librapay\Message\Traits\CompletePurchaseRequestTrait;
 use ByTIC\Omnipay\Librapay\Models\AbstractModel;
 
 /**
@@ -104,7 +105,7 @@ class Purchase extends AbstractModel
     }
 
     /**
-     * @param AbstractRequest $request
+     * @param AbstractRequest|CompletePurchaseRequestTrait $request
      * @return static
      * @throws \Omnipay\Common\Exception\InvalidRequestException
      */

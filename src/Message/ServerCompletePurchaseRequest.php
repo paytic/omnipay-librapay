@@ -17,9 +17,4 @@ use Symfony\Component\HttpFoundation\ParameterBag;
 class ServerCompletePurchaseRequest extends AbstractRequest
 {
     use CompletePurchaseRequestTrait;
-
-    protected function getHttpRequestBag(): ParameterBag
-    {
-        return $this->httpRequest->request;
-    }
 }
