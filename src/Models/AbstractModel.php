@@ -17,9 +17,24 @@ abstract class AbstractModel
     public function initParams($params)
     {
         foreach ($params as $key => $value) {
-            if (property_exists($this, $key)) {
-                $this->{$key} = $value;
-            }
+            $this->initParam($key, $value);
+        }
+    }
+
+    /**
+     * @param $key
+     * @param $value
+     */
+    public function initParam($key, $value)
+    {
+        $method = 'set'. ucfirst($key);
+        if (method_exists($this, $method)) {
+            $this->$method($value);
+            return;
+        }
+        if (property_exists($this, $key)) {
+            $this->{$key} = $value;
+            return;
         }
     }
 

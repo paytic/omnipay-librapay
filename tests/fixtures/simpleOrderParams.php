@@ -1,29 +1,23 @@
 <?php
 
 return [
-    'orderId' => 100007,
-    'amount' => 3.49,
-    'description' => 'Comanda online #100006',
+    'orderId' => 999999999999994648,
+    'amount' => '50.00',
+    'description' => 'Plata Maratonul 1 Decembrie 2018 [#1533300867-187914]',
     'card' => [
         'first_name' => 'Gabriel',
         'last_name' => 'Solomon',
         'email' => 'solomongaby@yahoo.com',
         'phone' => '0741.040.219'
     ],
-    'returnUrl' => 'http://localhost/libraries/bytic/omnipay-librapay/examples/card-response.php',
+    'returnUrl' => 'https://register.42km.ro/payments/confirm?hash=792ef12f2c7d50255644934a6c3a82ea79579705',
     'notifyUrl' => '',
     'items' => [
         [
-            'name' => 'Paine',
-            'price' => '1.25',
-            'description' => 'Paine de casa',
+            'name' => 'Plata Maratonul 1 Decembrie 2018 [#1533300867-187914]',
+            'price' => '50.00',
+            'description' => 'Plata Maratonul 1 Decembrie 2018 [#1533300867-187914]',
             'quantity' => 1,
-        ],
-        [
-            'name' => 'Paine2',
-            'price' => '1.12',
-            'description' => 'Product 2 Desc',
-            'quantity' => 2,
-        ],
+        ]
     ]
 ];

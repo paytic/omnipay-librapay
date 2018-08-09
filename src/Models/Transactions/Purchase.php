@@ -13,22 +13,26 @@ use ByTIC\Omnipay\Librapay\Models\AbstractModel;
 class Purchase extends AbstractModel
 {
     /**
-     * @var
+     * @var float
      */
     protected $amount;
 
     /**
+     * 3 letter string
      * @var
      */
     protected $currency;
 
     /**
-     * @var
+     * Order ID. It must have at least 6 and maximum 19 numeric chars, must be unique for every order and
+     * it must not contain leading zero (valid example: 100001)
+     * @var int
      */
     protected $order;
 
     /**
-     * @var
+     * Order description displayed in the LibraPay. Limit 50 characters
+     * @var string
      */
     protected $desc;
 
@@ -97,7 +101,7 @@ class Purchase extends AbstractModel
         $fields = static::getFieldsForString();
         foreach ($fields as $field) {
             if (isset($params[$field])) {
-                $transaction->{$field} = $params[$field];
+                $transaction->initParam($field, $params[$field]);
             }
         }
 
@@ -112,19 +116,19 @@ class Purchase extends AbstractModel
     public static function fromRequest(AbstractRequest $request)
     {
         $transaction = new static();
-        $transaction->amount = $request->getAmount();
-        $transaction->currency = $request->getCurrency();
-        $transaction->order = $request->getOrderId();
-        $transaction->desc = $request->getDescription();
-        $transaction->merch_name = $request->getMerchantName();
-        $transaction->merch_url = $request->getMerchantUrl();
-        $transaction->merchant = $request->getMerchant();
-        $transaction->terminal = $request->getTerminal();
-        $transaction->email = $request->getMerchantEmail();
+        $transaction->initParam('amount', $request->getAmount());
+        $transaction->initParam('currency', $request->getCurrency());
+        $transaction->initParam('order', $request->getOrderId());
+        $transaction->initParam('desc', $request->getDescription());
+        $transaction->initParam('merch_name', $request->getMerchantName());
+        $transaction->initParam('merch_url', $request->getMerchantUrl());
+        $transaction->initParam('merchant', $request->getMerchant());
+        $transaction->initParam('terminal', $request->getTerminal());
+        $transaction->initParam('email', $request->getMerchantEmail());
 //            $transaction->country= $request->getCard()->getCountry();
-        $transaction->timestamp = gmdate("YmdHis");
-        $transaction->nonce = md5("bytic".rand(99999, 9999999));
-        $transaction->backref = $request->getReturnUrl();
+        $transaction->initParam('timestamp', gmdate("YmdHis"));
+        $transaction->initParam('nonce', md5("bytic".rand(99999, 9999999)));
+        $transaction->initParam('backref', $request->getReturnUrl());
 
         $transaction->validateData();
 
@@ -161,6 +165,15 @@ class Purchase extends AbstractModel
     public function getDesc()
     {
         return $this->desc;
+    }
+
+    /**
+     * @param string $desc
+     */
+    public function setDesc(string $desc)
+    {
+        $desc = substr($desc, 0, 50);
+        $this->desc = $desc;
     }
 
     /**

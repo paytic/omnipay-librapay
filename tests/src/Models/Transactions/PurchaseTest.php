@@ -34,4 +34,17 @@ class PurchaseTest extends AbstractTest
         );
     }
 
+    public function testLongDescription()
+    {
+        $purchase = Purchase::fromParams([
+            'desc' => 'Plata Maratonul 1 Decembrie 2018 [#1533300867-187914]',
+        ]);
+
+        self::assertSame(50, strlen($purchase->getDesc()));
+        self::assertSame(
+            'Plata Maratonul 1 Decembrie 2018 [#1533300867-1879',
+            $purchase->getDesc()
+        );
+    }
+
 }
