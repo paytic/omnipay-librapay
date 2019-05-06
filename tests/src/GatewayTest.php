@@ -17,7 +17,8 @@ class GatewayTest extends AbstractTest
         $gateway = new Gateway($httpClient);
         $gateway->initialize(require TEST_FIXTURE_PATH . DIRECTORY_SEPARATOR. 'enviromentParams.php');
 
-        $request = $gateway->purchase(require TEST_FIXTURE_PATH . DIRECTORY_SEPARATOR. 'simpleOrderParams.php');
+        $orderData = require TEST_FIXTURE_PATH . DIRECTORY_SEPARATOR. 'simpleOrderParams.php';
+        $request = $gateway->purchase($orderData);
         $response = $request->send();
 
         $requestGateway = $httpClient->createRequest(
@@ -31,6 +32,6 @@ class GatewayTest extends AbstractTest
 
         self::assertContains('Date comanda',$htmlGateway);
         self::assertContains('Suma de plata:',$htmlGateway);
-        self::assertContains('3.49',$htmlGateway);
+        self::assertContains($orderData['amount'],$htmlGateway);
     }
 }

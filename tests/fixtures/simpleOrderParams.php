@@ -1,8 +1,8 @@
 <?php
 
 return [
-    'orderId' => 999999999999994648,
-    'amount' => '50.00',
+    'orderId' => 9999999999994648,
+    'amount' => '31.49',
     'description' => 'Plata Maratonul 1 Decembrie 2018 [#1533300867-187914]',
     'card' => [
         'first_name' => 'Gabriel',
@@ -15,7 +15,7 @@ return [
     'items' => [
         [
             'name' => 'Plata Maratonul 1 Decembrie 2018 [#1533300867-187914]',
-            'price' => '50.00',
+            'price' => '31.49',
             'description' => 'Plata Maratonul 1 Decembrie 2018 [#1533300867-187914]',
             'quantity' => 1,
         ]
