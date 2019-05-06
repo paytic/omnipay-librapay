@@ -50,6 +50,8 @@ trait CompletePurchaseRequestTrait
      */
     protected function populateFromHttpRequest(ParameterBag $parameters)
     {
+        $this->setMerchant($parameters->get('MERCHANT'));
+        $this->setTerminal($parameters->get('TERMINAL'));
         $this->setAmount($parameters->get('AMOUNT'));
         $this->setCurrency($parameters->get('CURRENCY'));
         $this->setOrderId($parameters->get('ORDER'));
@@ -88,6 +90,7 @@ trait CompletePurchaseRequestTrait
         $parameters = $this->getHttpRequestBag();
         return $parameters->has('TERMINAL')
             && $parameters->has('INT_REF')
-            && $parameters->has('P_SIGN');
+            && $parameters->has('P_SIGN')
+            && ($parameters->has('MERCH_GMT') || $parameters->has('STRING'));
     }
 }
