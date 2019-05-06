@@ -15,6 +15,9 @@ class GatewayTest extends AbstractTest
     {
         $httpClient = new Client();
         $gateway = new Gateway($httpClient);
+
+        $params = require TEST_FIXTURE_PATH . DIRECTORY_SEPARATOR. 'enviromentParams.php';
+        var_dump($params);
         $gateway->initialize(require TEST_FIXTURE_PATH . DIRECTORY_SEPARATOR. 'enviromentParams.php');
 
         $orderData = require TEST_FIXTURE_PATH . DIRECTORY_SEPARATOR. 'simpleOrderParams.php';
