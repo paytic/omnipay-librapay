@@ -23,10 +23,7 @@ class CompletePurchaseRequestTest extends AbstractTest
         $request->query->replace($parameters);
         $request = new CompletePurchaseRequest($client, $request);
 
-        $parameters = [];
-        foreach (['merchant', 'merchantName', 'merchantEmail', 'merchantUrl', 'terminal', 'key'] as $field) {
-            $parameters[$field] = $_ENV['LIBRAPAY_' . strtoupper($field)];
-        }
+        $parameters = require TEST_FIXTURE_PATH . DIRECTORY_SEPARATOR. 'enviromentParams.php';
         $request->initialize($parameters);
 
         $response = $request->send();

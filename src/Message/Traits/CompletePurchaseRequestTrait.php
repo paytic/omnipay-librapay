@@ -85,7 +85,7 @@ trait CompletePurchaseRequestTrait
     /**
      * @return mixed
      */
-    protected function isValidNotification()
+    public function isValidNotification()
     {
         $parameters = $this->getHttpRequestBag();
         return $parameters->has('TERMINAL')
