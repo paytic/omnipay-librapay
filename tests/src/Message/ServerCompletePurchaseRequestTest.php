@@ -17,18 +17,7 @@ class ServerCompletePurchaseRequestTest extends AbstractTest
 
     public function testSend()
     {
-        $client = new HttpClient();
-        $request = HttpRequest::createFromGlobals();
-        $parameters = require TEST_FIXTURE_PATH . DIRECTORY_SEPARATOR. 'completePurchaseParams.php';
-        $request->request->replace($parameters);
-        $request = new ServerCompletePurchaseRequest($client, $request);
-
-        $parameters = require TEST_FIXTURE_PATH . DIRECTORY_SEPARATOR. 'enviromentParams.php';
-        $request->initialize($parameters);
-
-        $response = $request->send();
-
-        self::assertInstanceOf(ServerCompletePurchaseResponse::class, $response);
+        $response = $this->generateResponse('/requests/serverCompletePurchaseParams.php');
 
         self::assertTrue($response->isSuccessful());
         self::assertFalse($response->isPending());
@@ -43,13 +32,32 @@ class ServerCompletePurchaseRequestTest extends AbstractTest
         self::assertSame('1',$response->getContent());
     }
 
+
+
+    protected function generateResponse($path)
+    {
+        $client = new HttpClient();
+        $request = self::generateRequestFromFixtures(TEST_FIXTURE_PATH . $path);
+
+        $request = new ServerCompletePurchaseRequest($client, $request);
+
+        $parameters = require TEST_FIXTURE_PATH . DIRECTORY_SEPARATOR. 'enviromentParams.php';
+        $request->initialize($parameters);
+
+        $response = $request->send();
+
+        self::assertInstanceOf(ServerCompletePurchaseResponse::class, $response);
+        return $response;
+    }
+
     public function testSendInvalidPSign()
     {
         $client = new HttpClient();
         $request = HttpRequest::createFromGlobals();
-        $parameters = require TEST_FIXTURE_PATH . DIRECTORY_SEPARATOR. 'completePurchaseParams.php';
-        $parameters['P_SIGN'] .= '11';
-        $request->request->replace($parameters);
+
+        $request = self::generateRequestFromFixtures(TEST_FIXTURE_PATH . '/requests/completePurchaseParams.php');
+        $request->request->set('P_SIGN', $request->request->get('P_SIGN'). '11');
+
         $request = new ServerCompletePurchaseRequest($client, $request);
 
         $parameters = require TEST_FIXTURE_PATH . DIRECTORY_SEPARATOR. 'enviromentParams.php';

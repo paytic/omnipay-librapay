@@ -6,7 +6,7 @@ namespace ByTIC\Omnipay\Librapay;
  * Class Helper
  * @package ByTIC\Omnipay\Librapay
  */
-class Helper
+class Helper extends \ByTIC\Omnipay\Common\Helper
 {
     /**
      * @param string $string
@@ -19,4 +19,5 @@ class Helper
 
         return strtoupper(hash_hmac('sha1', $string, $hexKey));;
     }
+
 }

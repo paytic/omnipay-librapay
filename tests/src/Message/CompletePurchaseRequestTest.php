@@ -15,12 +15,41 @@ use Symfony\Component\HttpFoundation\Request as HttpRequest;
 class CompletePurchaseRequestTest extends AbstractTest
 {
 
-    public function testSend()
+    public function testSendSuccessful()
+    {
+        $response = $this->generateResponse('/requests/completePurchaseParams.php');
+
+        self::assertTrue($response->isSuccessful());
+        self::assertFalse($response->isPending());
+        self::assertFalse($response->isCancelled());
+        self::assertFalse($response->isPending());
+
+        self::assertSame('00',$response->getCode());
+        self::assertSame('Approved',$response->getMessage());
+        self::assertSame('494108027545',$response->getTransactionReference());
+        self::assertSame('100005',$response->getTransactionId());
+    }
+
+    public function testSendSuccessful2()
+    {
+        $response = $this->generateResponse('/requests/completePurchaseParams2.php');
+
+        self::assertTrue($response->isSuccessful());
+        self::assertFalse($response->isPending());
+        self::assertFalse($response->isCancelled());
+        self::assertFalse($response->isPending());
+
+        self::assertSame('00',$response->getCode());
+        self::assertSame('Approved',$response->getMessage());
+        self::assertSame('919184259632',$response->getTransactionReference());
+        self::assertSame('138877',$response->getTransactionId());
+    }
+
+    protected function generateResponse($path)
     {
         $client = new HttpClient();
-        $request = HttpRequest::createFromGlobals();
-        $parameters = require TEST_FIXTURE_PATH . DIRECTORY_SEPARATOR. 'completePurchaseParams.php';
-        $request->query->replace($parameters);
+        $request = self::generateRequestFromFixtures(TEST_FIXTURE_PATH . $path);
+
         $request = new CompletePurchaseRequest($client, $request);
 
         $parameters = require TEST_FIXTURE_PATH . DIRECTORY_SEPARATOR. 'enviromentParams.php';
@@ -30,14 +59,7 @@ class CompletePurchaseRequestTest extends AbstractTest
 
         self::assertInstanceOf(CompletePurchaseResponse::class, $response);
 
-        self::assertTrue($response->isSuccessful());
-        self::assertFalse($response->isPending());
-        self::assertFalse($response->isCancelled());
-
-        self::assertSame('00',$response->getCode());
-        self::assertSame('Approved',$response->getMessage());
-        self::assertSame('494108027545',$response->getTransactionReference());
-        self::assertSame('100005',$response->getTransactionId());
+        return $response;
     }
 
     /**
