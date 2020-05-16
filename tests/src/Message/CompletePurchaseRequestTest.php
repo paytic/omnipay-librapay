@@ -45,9 +45,13 @@ class CompletePurchaseRequestTest extends AbstractTest
         self::assertSame('138877',$response->getTransactionId());
     }
 
+    /**
+     * @param $path
+     * @return CompletePurchaseResponse
+     */
     protected function generateResponse($path)
     {
-        $client = new HttpClient();
+        $client = $this->getHttpClient();
         $request = self::generateRequestFromFixtures(TEST_FIXTURE_PATH . $path);
 
         $request = new CompletePurchaseRequest($client, $request);

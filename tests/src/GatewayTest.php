@@ -4,6 +4,7 @@ namespace ByTIC\Omnipay\Librapay\Tests;
 
 use ByTIC\Omnipay\Librapay\Gateway;
 use Guzzle\Http\Client;
+use Http\Discovery\Psr17FactoryDiscovery;
 
 /**
  * Class GatewayTest
@@ -13,24 +14,32 @@ class GatewayTest extends AbstractTest
 {
     public function testPurchase()
     {
-        $httpClient = new Client();
+        $httpClient = $this->getHttpClientReal();
         $gateway = new Gateway($httpClient);
 
         $params = require TEST_FIXTURE_PATH . DIRECTORY_SEPARATOR. 'enviromentParams.php';
-        $gateway->initialize(require TEST_FIXTURE_PATH . DIRECTORY_SEPARATOR. 'enviromentParams.php');
+        $gateway->initialize($params);
 
         $orderData = require TEST_FIXTURE_PATH . DIRECTORY_SEPARATOR. 'simpleOrderParams.php';
         $request = $gateway->purchase($orderData);
         $response = $request->send();
 
-        $requestGateway = $httpClient->createRequest(
+        $body = $response->getRedirectData();
+        $headers = [];
+        if ($response->getRedirectMethod() == 'POST') {
+            $headers['Content-Type'] = 'application/x-www-form-urlencoded; charset=utf-8';
+            $body = Psr17FactoryDiscovery::findStreamFactory()->createStream(http_build_query($body, '', '&'));
+        }
+
+        $gatewayResponse = $httpClient->request(
             $response->getRedirectMethod(),
             $response->getRedirectUrl(),
-            null,
-            $response->getRedirectData()
+            $headers,
+            $body
         );
-        $responseGateway = $httpClient->send($requestGateway);
-        $htmlGateway = $responseGateway->getBody(true);
+
+        self::assertSame(200, $gatewayResponse->getStatusCode());
+        $htmlGateway = $gatewayResponse->getBody()->__toString();
 
         self::assertContains('Date comanda',$htmlGateway);
         self::assertContains('Suma de plata:',$htmlGateway);

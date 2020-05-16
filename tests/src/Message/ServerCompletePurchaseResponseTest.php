@@ -17,7 +17,7 @@ class ServerCompletePurchaseResponseTest extends AbstractTest
 
     public function testSendRrn0()
     {
-        $request = new ServerCompletePurchaseRequest(new HttpClient(), new HttpRequest());
+        $request = new ServerCompletePurchaseRequest($this->getHttpClient(), new HttpRequest());
         $response = new ServerCompletePurchaseResponse($request, [
             'notification' => ['rc' => '00']
         ]);
@@ -31,7 +31,7 @@ class ServerCompletePurchaseResponseTest extends AbstractTest
 
     public function testSendActionEmptyNotification()
     {
-        $request = new ServerCompletePurchaseRequest(new HttpClient(), new HttpRequest());
+        $request = new ServerCompletePurchaseRequest($this->getHttpClient(), new HttpRequest());
         $response = new ServerCompletePurchaseResponse($request, [
             'string' => 'aaa',
             'p_string' => 'bbb',

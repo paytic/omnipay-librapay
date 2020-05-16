@@ -33,10 +33,13 @@ class ServerCompletePurchaseRequestTest extends AbstractTest
     }
 
 
-
+    /**
+     * @param $path
+     * @return ServerCompletePurchaseResponse
+     */
     protected function generateResponse($path)
     {
-        $client = new HttpClient();
+        $client = $this->getHttpClient();
         $request = self::generateRequestFromFixtures(TEST_FIXTURE_PATH . $path);
 
         $request = new ServerCompletePurchaseRequest($client, $request);
@@ -52,7 +55,7 @@ class ServerCompletePurchaseRequestTest extends AbstractTest
 
     public function testSendInvalidPSign()
     {
-        $client = new HttpClient();
+        $client = $this->getHttpClient();
         $request = HttpRequest::createFromGlobals();
 
         $request = self::generateRequestFromFixtures(TEST_FIXTURE_PATH . '/requests/completePurchaseParams.php');

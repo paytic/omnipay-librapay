@@ -2,8 +2,8 @@
 
 namespace ByTIC\Omnipay\Librapay\Tests;
 
-use PHPUnit\Framework\TestCase;
-
+use ByTIC\Omnipay\Librapay\Tests\Traits\HasTestUtilMethods;
+use Omnipay\Tests\TestCase;
 use Symfony\Component\HttpFoundation\Request as HttpRequest;
 
 /**
@@ -11,8 +11,9 @@ use Symfony\Component\HttpFoundation\Request as HttpRequest;
  */
 abstract class AbstractTest extends TestCase
 {
-    protected $object;
+    use HasTestUtilMethods;
 
+    protected $object;
 
     /**
      * @param $path
