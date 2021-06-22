@@ -50,12 +50,20 @@ trait CompletePurchaseRequestTrait
      */
     protected function populateFromHttpRequest(ParameterBag $parameters)
     {
-        $this->setMerchant($parameters->get('MERCHANT'));
-        $this->setTerminal($parameters->get('TERMINAL'));
-        $this->setAmount($parameters->get('AMOUNT'));
-        $this->setCurrency($parameters->get('CURRENCY'));
-        $this->setOrderId($parameters->get('ORDER'));
-        $this->setDescription($parameters->get('DESC'));
+        $fields = [
+            'setMerchant' => 'MERCHANT',
+            'setTerminal' => 'TERMINAL',
+            'setAmount' => 'AMOUNT',
+            'setCurrency' => 'CURRENCY',
+            'setOrderId' => 'ORDER',
+            'setDescription' => 'DESC',
+        ];
+
+        foreach ($fields as $method=>$field) {
+            if ($parameters->has($field)) {
+                $this->$method($parameters->get($field));
+            }
+        }
     }
 
     /**
