@@ -99,6 +99,7 @@ trait CompletePurchaseRequestTrait
         return $parameters->has('TERMINAL')
             && $parameters->has('INT_REF')
             && $parameters->has('P_SIGN')
-            && ($parameters->has('MERCH_GMT') || $parameters->has('STRING'));
+            && $parameters->has('NONCE')
+            && $parameters->has('RC');
     }
 }
