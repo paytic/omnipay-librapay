@@ -100,6 +100,7 @@ trait CompletePurchaseRequestTrait
             && $parameters->has('INT_REF')
             && $parameters->has('P_SIGN')
             && $parameters->has('NONCE')
+            && $parameters->has('RRN') // This is different from Romcard notification
             && $parameters->has('RC');
     }
 }
