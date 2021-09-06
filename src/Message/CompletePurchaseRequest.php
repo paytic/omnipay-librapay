@@ -1,13 +1,13 @@
 <?php
 
-namespace ByTIC\Omnipay\Librapay\Message;
+namespace Paytic\Omnipay\Librapay\Message;
 
-use ByTIC\Omnipay\Librapay\Message\Traits\CompletePurchaseRequestTrait;
+use Paytic\Omnipay\Librapay\Message\Traits\CompletePurchaseRequestTrait;
 use Symfony\Component\HttpFoundation\ParameterBag;
 
 /**
  * Class PurchaseResponse
- * @package ByTIC\Omnipay\Librapay\Message
+ * @package Paytic\Omnipay\Librapay\Message
  *
  * @method CompletePurchaseResponse send()
  */

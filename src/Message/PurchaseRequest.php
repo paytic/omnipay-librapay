@@ -1,16 +1,16 @@
 <?php
 
-namespace ByTIC\Omnipay\Librapay\Message;
+namespace Paytic\Omnipay\Librapay\Message;
 
 use ByTIC\Omnipay\Common\Library\Signer;
 use ByTIC\Omnipay\Common\Message\Traits\RequestDataGetWithValidationTrait;
-use ByTIC\Omnipay\Librapay\Helper;
-use ByTIC\Omnipay\Librapay\Models\Order\CustomData;
-use ByTIC\Omnipay\Librapay\Models\Transactions\Purchase;
+use Paytic\Omnipay\Librapay\Helper;
+use Paytic\Omnipay\Librapay\Models\Order\CustomData;
+use Paytic\Omnipay\Librapay\Models\Transactions\Purchase;
 
 /**
  * Class PurchaseRequest
- * @package ByTIC\Omnipay\Librapay\Message
+ * @package Paytic\Omnipay\Librapay\Message
  *
  * @method PurchaseResponse send()
  */

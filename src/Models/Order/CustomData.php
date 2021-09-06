@@ -1,12 +1,12 @@
 <?php
 
-namespace ByTIC\Omnipay\Librapay\Models\Order;
+namespace Paytic\Omnipay\Librapay\Models\Order;
 
-use ByTIC\Omnipay\Librapay\Message\PurchaseRequest;
+use Paytic\Omnipay\Librapay\Message\PurchaseRequest;
 
 /**
  * Class CustomData
- * @package ByTIC\Omnipay\Librapay\Models\Order
+ * @package Paytic\Omnipay\Librapay\Models\Order
  */
 class CustomData
 {

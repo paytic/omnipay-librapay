@@ -1,6 +1,6 @@
 <?php
 
-namespace ByTIC\Omnipay\Librapay\Tests\Traits;
+namespace Paytic\Omnipay\Librapay\Tests\Traits;
 
 use Mockery as m;
 use ReflectionObject;
@@ -13,7 +13,7 @@ use Symfony\Component\HttpFoundation\Request as HttpRequest;
 
 /**
  * Trait HasTestUtilMethods
- * @package ByTIC\Omnipay\Librapay\Tests\Traits
+ * @package Paytic\Omnipay\Librapay\Tests\Traits
  */
 trait HasTestUtilMethods
 {

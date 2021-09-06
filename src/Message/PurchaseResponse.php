@@ -1,9 +1,9 @@
 <?php
 
-namespace ByTIC\Omnipay\Librapay\Message;
+namespace Paytic\Omnipay\Librapay\Message;
 
 use ByTIC\Omnipay\Common\Message\Traits\RedirectHtmlTrait;
-use ByTIC\Omnipay\Librapay\Models\Transactions\Purchase;
+use Paytic\Omnipay\Librapay\Models\Transactions\Purchase;
 use Omnipay\Common\Message\RedirectResponseInterface;
 
 /**

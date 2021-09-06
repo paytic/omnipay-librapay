@@ -1,12 +1,12 @@
 <?php
 
-namespace ByTIC\Omnipay\Librapay\Models\Order;
+namespace Paytic\Omnipay\Librapay\Models\Order;
 
 use Omnipay\Common\ItemBag;
 
 /**
  * Class Product
- * @package ByTIC\Omnipay\Librapay\Models
+ * @package Paytic\Omnipay\Librapay\Models
  */
 class ProductsBag
 {

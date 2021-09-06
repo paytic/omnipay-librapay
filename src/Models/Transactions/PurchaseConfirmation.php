@@ -1,12 +1,12 @@
 <?php
 
-namespace ByTIC\Omnipay\Librapay\Models\Transactions;
+namespace Paytic\Omnipay\Librapay\Models\Transactions;
 
-use ByTIC\Omnipay\Librapay\Models\Traits\ToArrayTrait;
+use Paytic\Omnipay\Librapay\Models\Traits\ToArrayTrait;
 
 /**
  * Class PurchaseConfirmation
- * @package ByTIC\Omnipay\Librapay\Models\Transactions
+ * @package Paytic\Omnipay\Librapay\Models\Transactions
  */
 class PurchaseConfirmation extends Purchase
 {

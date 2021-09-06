@@ -1,6 +1,6 @@
 <?php
 
-namespace ByTIC\Omnipay\Librapay\Message\Traits;
+namespace Paytic\Omnipay\Librapay\Message\Traits;
 
 use ByTIC\Omnipay\Common\Message\Traits\GatewayNotificationResponseTrait;
 use ByTIC\Omnipay\Common\Message\Traits\HtmlResponses\ConfirmHtmlTrait;
@@ -48,6 +48,10 @@ trait CompletePurchaseResponseTrait
         if ($this->hasNotificationDataItem('message')) {
             return $this->getNotificationDataItem('message');
         }
+        if ($this->hasDataProperty('message')) {
+            return $this->getDataProperty('message');
+        }
+
 
         return parent::getMessage();
     }

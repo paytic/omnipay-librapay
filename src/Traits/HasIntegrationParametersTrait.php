@@ -1,6 +1,6 @@
 <?php
 
-namespace ByTIC\Omnipay\Librapay\Traits;
+namespace Paytic\Omnipay\Librapay\Traits;
 
 trait HasIntegrationParametersTrait
 {

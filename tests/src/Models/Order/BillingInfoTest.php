@@ -1,14 +1,14 @@
 <?php
 
-namespace ByTIC\Omnipay\Librapay\Tests\Models\Order;
+namespace Paytic\Omnipay\Librapay\Tests\Models\Order;
 
-use ByTIC\Omnipay\Librapay\Models\Order\BillingInfo;
-use ByTIC\Omnipay\Librapay\Tests\AbstractTest;
+use Paytic\Omnipay\Librapay\Models\Order\BillingInfo;
+use Paytic\Omnipay\Librapay\Tests\AbstractTest;
 use Omnipay\Common\CreditCard;
 
 /**
  * Class BillingInfoTest
- * @package ByTIC\Omnipay\Librapay\Tests\Models\Order
+ * @package Paytic\Omnipay\Librapay\Tests\Models\Order
  */
 class BillingInfoTest extends AbstractTest
 {

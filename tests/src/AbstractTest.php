@@ -1,8 +1,8 @@
 <?php
 
-namespace ByTIC\Omnipay\Librapay\Tests;
+namespace Paytic\Omnipay\Librapay\Tests;
 
-use ByTIC\Omnipay\Librapay\Tests\Traits\HasTestUtilMethods;
+use Paytic\Omnipay\Librapay\Tests\Traits\HasTestUtilMethods;
 use Omnipay\Tests\TestCase;
 use Symfony\Component\HttpFoundation\Request as HttpRequest;
 
@@ -23,12 +23,16 @@ abstract class AbstractTest extends TestCase
     {
         $request = HttpRequest::createFromGlobals();
         $parameters = require $path;
-        if ($parameters['request']) {
+        if (isset($parameters['request'])) {
             $request->request->replace($parameters['request']);
         }
 
-        if ($parameters['query']) {
+        if (isset($parameters['query'])) {
             $request->query->replace($parameters['query']);
+        }
+
+        if (isset($parameters['headers'])) {
+            $request->headers->add($parameters['headers']);
         }
         return $request;
     }

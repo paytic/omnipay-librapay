@@ -1,15 +1,15 @@
 <?php
 
-namespace ByTIC\Omnipay\Librapay\Models\Order;
+namespace Paytic\Omnipay\Librapay\Models\Order;
 
-use ByTIC\Omnipay\Librapay\Models\AbstractModel;
-use ByTIC\Omnipay\Librapay\Models\Traits\ToArrayTrait;
+use Paytic\Omnipay\Librapay\Models\AbstractModel;
+use Paytic\Omnipay\Librapay\Models\Traits\ToArrayTrait;
 use Omnipay\Common\Exception\InvalidRequestException;
 use Omnipay\Common\Item;
 
 /**
  * Class Product
- * @package ByTIC\Omnipay\Librapay\Models
+ * @package Paytic\Omnipay\Librapay\Models
  */
 class Product extends AbstractModel
 {
