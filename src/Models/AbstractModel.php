@@ -1,12 +1,12 @@
 <?php
 
-namespace ByTIC\Omnipay\Librapay\Models;
+namespace Paytic\Omnipay\Librapay\Models;
 
 use Omnipay\Common\Exception\InvalidRequestException;
 
 /**
  * Class AbstractModel
- * @package ByTIC\Omnipay\Librapay\Models
+ * @package Paytic\Omnipay\Librapay\Models
  */
 abstract class AbstractModel
 {

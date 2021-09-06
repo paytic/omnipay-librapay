@@ -1,14 +1,14 @@
 <?php
 
-namespace ByTIC\Omnipay\Librapay\Tests\Models\Transactions;
+namespace Paytic\Omnipay\Librapay\Tests\Models\Transactions;
 
-use ByTIC\Omnipay\Librapay\Models\Transactions\Purchase;
-use ByTIC\Omnipay\Librapay\Models\Transactions\PurchaseConfirmation;
-use ByTIC\Omnipay\Librapay\Tests\AbstractTest;
+use Paytic\Omnipay\Librapay\Models\Transactions\Purchase;
+use Paytic\Omnipay\Librapay\Models\Transactions\PurchaseConfirmation;
+use Paytic\Omnipay\Librapay\Tests\AbstractTest;
 
 /**
  * Class PurchaseConfirmationTest
- * @package ByTIC\Omnipay\Librapay\Tests\Models\Purchase
+ * @package Paytic\Omnipay\Librapay\Tests\Models\Purchase
  */
 class PurchaseConfirmationTest extends AbstractTest
 {

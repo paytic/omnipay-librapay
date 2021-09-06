@@ -1,16 +1,16 @@
 <?php
 
-namespace ByTIC\Omnipay\Librapay\Tests\Message;
+namespace Paytic\Omnipay\Librapay\Tests\Message;
 
-use ByTIC\Omnipay\Librapay\Message\CompletePurchaseRequest;
-use ByTIC\Omnipay\Librapay\Message\CompletePurchaseResponse;
-use ByTIC\Omnipay\Librapay\Tests\AbstractTest;
+use Paytic\Omnipay\Librapay\Message\CompletePurchaseRequest;
+use Paytic\Omnipay\Librapay\Message\CompletePurchaseResponse;
+use Paytic\Omnipay\Librapay\Tests\AbstractTest;
 use Guzzle\Http\Client as HttpClient;
 use Symfony\Component\HttpFoundation\Request as HttpRequest;
 
 /**
  * Class CompletePurchaseRequestTest
- * @package ByTIC\Omnipay\Librapay\Tests\Message
+ * @package Paytic\Omnipay\Librapay\Tests\Message
  */
 class CompletePurchaseRequestTest extends AbstractTest
 {

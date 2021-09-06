@@ -1,13 +1,13 @@
 <?php
 
-namespace ByTIC\Omnipay\Librapay\Tests\Models\Order;
+namespace Paytic\Omnipay\Librapay\Tests\Models\Order;
 
-use ByTIC\Omnipay\Librapay\Models\Order\CustomData;
-use ByTIC\Omnipay\Librapay\Tests\AbstractTest;
+use Paytic\Omnipay\Librapay\Models\Order\CustomData;
+use Paytic\Omnipay\Librapay\Tests\AbstractTest;
 
 /**
  * Class CustomDataTest
- * @package ByTIC\Omnipay\Librapay\Tests\Models\Order
+ * @package Paytic\Omnipay\Librapay\Tests\Models\Order
  */
 class CustomDataTest extends AbstractTest
 {

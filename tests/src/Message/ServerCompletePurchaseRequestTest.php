@@ -1,20 +1,19 @@
 <?php
 
-namespace ByTIC\Omnipay\Librapay\Tests\Message;
+namespace Paytic\Omnipay\Librapay\Tests\Message;
 
-use ByTIC\Omnipay\Librapay\Message\ServerCompletePurchaseRequest;
-use ByTIC\Omnipay\Librapay\Message\ServerCompletePurchaseResponse;
-use ByTIC\Omnipay\Librapay\Tests\AbstractTest;
 use Guzzle\Http\Client as HttpClient;
+use Paytic\Omnipay\Librapay\Message\ServerCompletePurchaseRequest;
+use Paytic\Omnipay\Librapay\Message\ServerCompletePurchaseResponse;
+use Paytic\Omnipay\Librapay\Tests\AbstractTest;
 use Symfony\Component\HttpFoundation\Request as HttpRequest;
 
 /**
  * Class ServerCompletePurchaseRequestTest
- * @package ByTIC\Omnipay\Librapay\Tests\Message
+ * @package Paytic\Omnipay\Librapay\Tests\Message
  */
 class ServerCompletePurchaseRequestTest extends AbstractTest
 {
-
     public function testSend()
     {
         $response = $this->generateResponse('/requests/serverCompletePurchaseParams.php');
@@ -32,22 +31,19 @@ class ServerCompletePurchaseRequestTest extends AbstractTest
         self::assertSame('1',$response->getContent());
     }
 
-
-
-    protected function generateResponse($path)
+    public function test_timeout()
     {
-        $client = new HttpClient();
-        $request = self::generateRequestFromFixtures(TEST_FIXTURE_PATH . $path);
+        $response = $this->generateResponse('/requests/server_complete/timeout_params.php');
 
-        $request = new ServerCompletePurchaseRequest($client, $request);
+        self::assertFalse($response->isSuccessful());
+        self::assertFalse($response->isPending());
+        self::assertFalse($response->isCancelled());
 
-        $parameters = require TEST_FIXTURE_PATH . DIRECTORY_SEPARATOR. 'enviromentParams.php';
-        $request->initialize($parameters);
-
-        $response = $request->send();
-
-        self::assertInstanceOf(ServerCompletePurchaseResponse::class, $response);
-        return $response;
+        self::assertSame('990', $response->getCode());
+        self::assertSame('Transaction timeout', $response->getMessage());
+        self::assertSame(
+            '<br />1:20F0B7B6839E7969D92B02E642FA74D696F7C734<br />2:88800236910618851240.00000399019Transaction timeout-41111411111420201011171601325b8ec8212f41b7251f9a335066466b350',
+            $response->getContent());
     }
 
     public function testSendInvalidPSign()
@@ -72,4 +68,22 @@ class ServerCompletePurchaseRequestTest extends AbstractTest
         self::assertFalse($response->isCancelled());
         self::assertEmpty($response->getDataProperty('notification'));
     }
+
+    protected function generateResponse($path)
+    {
+        $client = new HttpClient();
+        $request = self::generateRequestFromFixtures(TEST_FIXTURE_PATH.$path);
+
+        $request = new ServerCompletePurchaseRequest($client, $request);
+
+        $parameters = require TEST_FIXTURE_PATH.DIRECTORY_SEPARATOR.'enviromentParams.php';
+        $request->initialize($parameters);
+
+        $response = $request->send();
+
+        self::assertInstanceOf(ServerCompletePurchaseResponse::class, $response);
+
+        return $response;
+    }
+
 }

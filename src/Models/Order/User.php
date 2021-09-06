@@ -1,14 +1,14 @@
 <?php
 
-namespace ByTIC\Omnipay\Librapay\Models\Order;
+namespace Paytic\Omnipay\Librapay\Models\Order;
 
-use ByTIC\Omnipay\Librapay\Models\AbstractModel;
-use ByTIC\Omnipay\Librapay\Models\Traits\ToArrayTrait;
+use Paytic\Omnipay\Librapay\Models\AbstractModel;
+use Paytic\Omnipay\Librapay\Models\Traits\ToArrayTrait;
 use Omnipay\Common\CreditCard;
 
 /**
  * Class User
- * @package ByTIC\Omnipay\Librapay\Models\Order
+ * @package Paytic\Omnipay\Librapay\Models\Order
  */
 class User extends AbstractModel
 {

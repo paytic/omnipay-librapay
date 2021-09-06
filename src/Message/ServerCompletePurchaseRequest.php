@@ -1,10 +1,10 @@
 <?php
 
-namespace ByTIC\Omnipay\Librapay\Message;
+namespace Paytic\Omnipay\Librapay\Message;
 
 use ByTIC\Omnipay\Common\Library\Signer;
 use ByTIC\Omnipay\Common\Message\Traits\GatewayNotificationRequestTrait;
-use ByTIC\Omnipay\Librapay\Message\Traits\CompletePurchaseRequestTrait;
+use Paytic\Omnipay\Librapay\Message\Traits\CompletePurchaseRequestTrait;
 use Exception;
 use Symfony\Component\HttpFoundation\ParameterBag;
 

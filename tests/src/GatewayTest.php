@@ -1,13 +1,13 @@
 <?php
 
-namespace ByTIC\Omnipay\Librapay\Tests;
+namespace Paytic\Omnipay\Librapay\Tests;
 
-use ByTIC\Omnipay\Librapay\Gateway;
+use Paytic\Omnipay\Librapay\Gateway;
 use Guzzle\Http\Client;
 
 /**
  * Class GatewayTest
- * @package ByTIC\Omnipay\Librapay\Tests
+ * @package Paytic\Omnipay\Librapay\Tests
  */
 class GatewayTest extends AbstractTest
 {

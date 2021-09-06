@@ -1,6 +1,6 @@
 <?php
 
-namespace ByTIC\Omnipay\Librapay\Models\Traits;
+namespace Paytic\Omnipay\Librapay\Models\Traits;
 
 trait ToArrayTrait
 {

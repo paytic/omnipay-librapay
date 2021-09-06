@@ -1,16 +1,17 @@
 <?php
 
-namespace ByTIC\Omnipay\Librapay\Message\Traits;
+namespace Paytic\Omnipay\Librapay\Message\Traits;
 
 use ByTIC\Omnipay\Common\Message\Traits\GatewayNotificationRequestTrait;
-use ByTIC\Omnipay\Librapay\Helper;
-use ByTIC\Omnipay\Librapay\Models\Transactions\PurchaseConfirmation;
+use Nip\Utility\Str;
+use Paytic\Omnipay\Librapay\Helper;
+use Paytic\Omnipay\Librapay\Models\Transactions\PurchaseConfirmation;
 use Exception;
 use Symfony\Component\HttpFoundation\ParameterBag;
 
 /**
  * Trait CompletePurchaseRequestTrait
- * @package ByTIC\Omnipay\Librapay\Message\Traits
+ * @package Paytic\Omnipay\Librapay\Message\Traits
  */
 trait CompletePurchaseRequestTrait
 {
@@ -95,15 +96,32 @@ trait CompletePurchaseRequestTrait
      */
     public function isValidNotification()
     {
+        $userAgent = $this->httpRequest->headers->get('User-Agent');
+        if (Str::contains($userAgent, ['Libra','libra'])) {
+            return true;
+        }
+
         $parameters = $this->getHttpRequestBag();
-        return $parameters->has('TERMINAL')
-            && $parameters->has('INT_REF')
-            && $parameters->has('P_SIGN')
-            && $parameters->has('NONCE')
-            && (
-                $parameters->has('MERCH_GMT') // in confirm
-                || $parameters->has('STRING') // in IPN requests
-            )
-            && $parameters->has('RC');
+
+        $requiredParams = ['TERMINAL','INT_REF','P_SIGN','NONCE','RC'];
+        foreach ($requiredParams as $param) {
+            if ($parameters->has($param) ===false) {
+                return false;
+            }
+        }
+
+        // in confirm
+        if ($parameters->has('MERCH_GMT')) {
+            return true;
+        }
+
+        // in IPN requests
+        if ($parameters->has('STRING')) {
+            return true;
+        }
+        if ($parameters->has('STRING')) {
+            return true;
+        }
+        return false;
     }
 }

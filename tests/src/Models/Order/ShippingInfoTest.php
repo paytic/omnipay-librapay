@@ -1,9 +1,9 @@
 <?php
 
-namespace ByTIC\Omnipay\Librapay\Tests\Models\Order;
+namespace Paytic\Omnipay\Librapay\Tests\Models\Order;
 
-use ByTIC\Omnipay\Librapay\Models\Order\ShippingInfo;
-use ByTIC\Omnipay\Librapay\Tests\AbstractTest;
+use Paytic\Omnipay\Librapay\Models\Order\ShippingInfo;
+use Paytic\Omnipay\Librapay\Tests\AbstractTest;
 use Omnipay\Common\CreditCard;
 
 class ShippingInfoTest extends AbstractTest

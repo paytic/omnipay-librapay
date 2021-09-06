@@ -1,14 +1,14 @@
 <?php
 
-namespace ByTIC\Omnipay\Librapay\Models\Transactions;
+namespace Paytic\Omnipay\Librapay\Models\Transactions;
 
-use ByTIC\Omnipay\Librapay\Message\AbstractRequest;
-use ByTIC\Omnipay\Librapay\Message\Traits\CompletePurchaseRequestTrait;
-use ByTIC\Omnipay\Librapay\Models\AbstractModel;
+use Paytic\Omnipay\Librapay\Message\AbstractRequest;
+use Paytic\Omnipay\Librapay\Message\Traits\CompletePurchaseRequestTrait;
+use Paytic\Omnipay\Librapay\Models\AbstractModel;
 
 /**
  * Class Transaction
- * @package ByTIC\Omnipay\Librapay\Models
+ * @package Paytic\Omnipay\Librapay\Models
  */
 class Purchase extends AbstractModel
 {

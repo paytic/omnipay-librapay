@@ -1,14 +1,14 @@
 <?php
 
-namespace ByTIC\Omnipay\Librapay\Message;
+namespace Paytic\Omnipay\Librapay\Message;
 
 use ByTIC\Omnipay\Common\Message\Traits\SendDataRequestTrait;
-use ByTIC\Omnipay\Librapay\Traits\HasIntegrationParametersTrait;
+use Paytic\Omnipay\Librapay\Traits\HasIntegrationParametersTrait;
 use Omnipay\Common\Message\AbstractRequest as CommonAbstractRequest;
 
 /**
  * Class AbstractRequest
- * @package ByTIC\Omnipay\Librapay\Message
+ * @package Paytic\Omnipay\Librapay\Message
  */
 abstract class AbstractRequest extends CommonAbstractRequest
 {
