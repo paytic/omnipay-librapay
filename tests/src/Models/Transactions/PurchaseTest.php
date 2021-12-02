@@ -46,5 +46,4 @@ class PurchaseTest extends AbstractTest
             $purchase->getDesc()
         );
     }
-
 }

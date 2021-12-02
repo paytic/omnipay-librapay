@@ -22,13 +22,13 @@ class ServerCompletePurchaseRequestTest extends AbstractTest
         self::assertFalse($response->isPending());
         self::assertFalse($response->isCancelled());
 
-        self::assertSame('00',$response->getCode());
-        self::assertSame('Approved',$response->getMessage());
-        self::assertSame('494108027545',$response->getTransactionReference());
-        self::assertSame('100005',$response->getTransactionId());
+        self::assertSame('00', $response->getCode());
+        self::assertSame('Approved', $response->getMessage());
+        self::assertSame('494108027545', $response->getTransactionReference());
+        self::assertSame('100005', $response->getTransactionId());
 
-        self::assertSame('100005',$response->getTransactionId());
-        self::assertSame('1',$response->getContent());
+        self::assertSame('100005', $response->getTransactionId());
+        self::assertSame('1', $response->getContent());
     }
 
     public function test_timeout()
@@ -43,7 +43,8 @@ class ServerCompletePurchaseRequestTest extends AbstractTest
         self::assertSame('Transaction timeout', $response->getMessage());
         self::assertSame(
             '<br />1:20F0B7B6839E7969D92B02E642FA74D696F7C734<br />2:88800236910618851240.00000399019Transaction timeout-41111411111420201011171601325b8ec8212f41b7251f9a335066466b350',
-            $response->getContent());
+            $response->getContent()
+        );
     }
 
     public function testSendInvalidPSign()
@@ -85,5 +86,4 @@ class ServerCompletePurchaseRequestTest extends AbstractTest
 
         return $response;
     }
-
 }

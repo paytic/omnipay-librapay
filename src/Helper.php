@@ -17,7 +17,7 @@ class Helper extends \Paytic\Omnipay\Common\Helper
     {
         $hexKey = pack('H*', $key);
 
-        return strtoupper(hash_hmac('sha1', $string, $hexKey));;
+        return strtoupper(hash_hmac('sha1', $string, $hexKey));
+        ;
     }
-
 }

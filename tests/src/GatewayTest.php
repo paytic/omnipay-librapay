@@ -41,8 +41,8 @@ class GatewayTest extends AbstractTest
         self::assertSame(200, $gatewayResponse->getStatusCode());
         $htmlGateway = $gatewayResponse->getBody()->__toString();
 
-        self::assertContains('Date comanda',$htmlGateway);
-        self::assertContains('Suma de plata:',$htmlGateway);
-        self::assertContains($orderData['amount'],$htmlGateway);
+        self::assertContains('Date comanda', $htmlGateway);
+        self::assertContains('Suma de plata:', $htmlGateway);
+        self::assertContains($orderData['amount'], $htmlGateway);
     }
 }

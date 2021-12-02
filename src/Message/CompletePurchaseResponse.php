@@ -2,7 +2,6 @@
 
 namespace Paytic\Omnipay\Librapay\Message;
 
-
 use Paytic\Omnipay\Librapay\Message\Traits\CompletePurchaseResponseTrait;
 
 /**

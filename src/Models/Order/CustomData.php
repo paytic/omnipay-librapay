@@ -42,7 +42,7 @@ class CustomData
      * @param $params
      * @return CustomData
      */
-    public static function fromParams( $params)
+    public static function fromParams($params)
     {
         $data = new static();
         return $data;
