@@ -2,8 +2,8 @@
 
 namespace Paytic\Omnipay\Librapay\Message;
 
-use ByTIC\Omnipay\Common\Library\Signer;
-use ByTIC\Omnipay\Common\Message\Traits\GatewayNotificationRequestTrait;
+use Paytic\Omnipay\Common\Library\Signer;
+use Paytic\Omnipay\Common\Message\Traits\GatewayNotificationRequestTrait;
 use Paytic\Omnipay\Librapay\Message\Traits\CompletePurchaseRequestTrait;
 use Exception;
 use Symfony\Component\HttpFoundation\ParameterBag;

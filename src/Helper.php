@@ -6,7 +6,7 @@ namespace Paytic\Omnipay\Librapay;
  * Class Helper
  * @package Paytic\Omnipay\Librapay
  */
-class Helper extends \ByTIC\Omnipay\Common\Helper
+class Helper extends \Paytic\Omnipay\Common\Helper
 {
     /**
      * @param string $string

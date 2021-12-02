@@ -2,7 +2,7 @@
 
 namespace Paytic\Omnipay\Librapay\Message\Traits;
 
-use ByTIC\Omnipay\Common\Message\Traits\GatewayNotificationRequestTrait;
+use Paytic\Omnipay\Common\Message\Traits\GatewayNotificationRequestTrait;
 use Nip\Utility\Str;
 use Paytic\Omnipay\Librapay\Helper;
 use Paytic\Omnipay\Librapay\Models\Transactions\PurchaseConfirmation;

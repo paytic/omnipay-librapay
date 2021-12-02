@@ -2,7 +2,7 @@
 
 namespace Paytic\Omnipay\Librapay\Message;
 
-use ByTIC\Omnipay\Common\Message\Traits\RedirectHtmlTrait;
+use Paytic\Omnipay\Common\Message\Traits\RedirectHtmlTrait;
 use Paytic\Omnipay\Librapay\Models\Transactions\Purchase;
 use Omnipay\Common\Message\RedirectResponseInterface;
 

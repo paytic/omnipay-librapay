@@ -2,8 +2,8 @@
 
 namespace Paytic\Omnipay\Librapay\Message;
 
-use ByTIC\Omnipay\Common\Library\Signer;
-use ByTIC\Omnipay\Common\Message\Traits\RequestDataGetWithValidationTrait;
+use Paytic\Omnipay\Common\Library\Signer;
+use Paytic\Omnipay\Common\Message\Traits\RequestDataGetWithValidationTrait;
 use Paytic\Omnipay\Librapay\Helper;
 use Paytic\Omnipay\Librapay\Models\Order\CustomData;
 use Paytic\Omnipay\Librapay\Models\Transactions\Purchase;

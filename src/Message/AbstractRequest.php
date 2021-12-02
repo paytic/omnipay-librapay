@@ -2,7 +2,7 @@
 
 namespace Paytic\Omnipay\Librapay\Message;
 
-use ByTIC\Omnipay\Common\Message\Traits\SendDataRequestTrait;
+use Paytic\Omnipay\Common\Message\Traits\SendDataRequestTrait;
 use Paytic\Omnipay\Librapay\Traits\HasIntegrationParametersTrait;
 use Omnipay\Common\Message\AbstractRequest as CommonAbstractRequest;
 

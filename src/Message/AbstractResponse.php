@@ -2,7 +2,7 @@
 
 namespace Paytic\Omnipay\Librapay\Message;
 
-use ByTIC\Omnipay\Common\Message\Traits\DataAccessorsTrait;
+use Paytic\Omnipay\Common\Message\Traits\DataAccessorsTrait;
 use Omnipay\Common\Message\AbstractResponse as CommonAbstractResponse;
 
 /**
