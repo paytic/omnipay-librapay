@@ -14,7 +14,6 @@ use Symfony\Component\HttpFoundation\Request as HttpRequest;
  */
 class CompletePurchaseRequestTest extends AbstractTest
 {
-
     public function testSendSuccessful()
     {
         $response = $this->generateResponse('/requests/completePurchaseParams.php');
@@ -24,10 +23,10 @@ class CompletePurchaseRequestTest extends AbstractTest
         self::assertFalse($response->isCancelled());
         self::assertFalse($response->isPending());
 
-        self::assertSame('00',$response->getCode());
-        self::assertSame('Approved',$response->getMessage());
-        self::assertSame('494108027545',$response->getTransactionReference());
-        self::assertSame('100005',$response->getTransactionId());
+        self::assertSame('00', $response->getCode());
+        self::assertSame('Approved', $response->getMessage());
+        self::assertSame('494108027545', $response->getTransactionReference());
+        self::assertSame('100005', $response->getTransactionId());
     }
 
     public function testSendSuccessful2()
@@ -39,10 +38,10 @@ class CompletePurchaseRequestTest extends AbstractTest
         self::assertFalse($response->isCancelled());
         self::assertFalse($response->isPending());
 
-        self::assertSame('00',$response->getCode());
-        self::assertSame('Approved',$response->getMessage());
-        self::assertSame('919184259632',$response->getTransactionReference());
-        self::assertSame('138877',$response->getTransactionId());
+        self::assertSame('00', $response->getCode());
+        self::assertSame('Approved', $response->getMessage());
+        self::assertSame('919184259632', $response->getTransactionReference());
+        self::assertSame('138877', $response->getTransactionId());
     }
 
     /**

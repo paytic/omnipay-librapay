@@ -36,5 +36,4 @@ class PurchaseConfirmationTest extends AbstractTest
             $purchase->__toString()
         );
     }
-
 }

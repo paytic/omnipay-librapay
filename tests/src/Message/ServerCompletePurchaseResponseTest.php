@@ -14,7 +14,6 @@ use Symfony\Component\HttpFoundation\Request as HttpRequest;
  */
 class ServerCompletePurchaseResponseTest extends AbstractTest
 {
-
     public function testSendRrn0()
     {
         $request = new ServerCompletePurchaseRequest($this->getHttpClient(), new HttpRequest());
