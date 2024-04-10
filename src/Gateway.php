@@ -6,7 +6,7 @@ use Paytic\Omnipay\Librapay\Message\CompletePurchaseRequest;
 use Paytic\Omnipay\Librapay\Message\PurchaseRequest;
 use Paytic\Omnipay\Librapay\Message\ServerCompletePurchaseRequest;
 use Paytic\Omnipay\Librapay\Traits\HasIntegrationParametersTrait;
-use Omnipay\Common\AbstractGateway;
+use Paytic\Omnipay\Common\Gateway\AbstractGateway;
 use Omnipay\Common\Message\RequestInterface;
 
 /**
